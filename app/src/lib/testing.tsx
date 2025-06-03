@@ -4,10 +4,10 @@ import React, { useState, type PropsWithChildren } from 'react';
 import { render } from '@testing-library/react';
 import { SessionProvider } from 'next-auth/react';
 import type { NextRouter } from 'next/router';
-import { RouterContext } from 'next/dist/shared/lib/router-context';
+import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime';
 import type { Session } from 'next-auth';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { rest } from 'msw';
+import { http } from 'msw';
 import type { TRPCError } from '@trpc/server';
 import { Toaster } from 'react-hot-toast';
 import Layout from '@components/Layout';
@@ -67,6 +67,7 @@ export const mockRouter: NextRouter = {
   query: {},
   asPath: '/',
   back: jest.fn(),
+  forward: jest.fn(),
   beforePopState: jest.fn(),
   prefetch: () => Promise.resolve(),
   push: jest.fn(),
@@ -86,35 +87,35 @@ export const mockRouter: NextRouter = {
 };
 
 export const mockTrpcQuery = (name: string, result: unknown) =>
-  rest.get(`http://localhost:3000/api/trpc/${name}`, (_req, res, ctx) =>
-    res(ctx.json({ result: { data: result } }))
-  );
+  http.get(`http://localhost:3000/api/trpc/${name}`, () => {
+    return Response.json({ result: { data: result } });
+  });
 
 export const mockTrpcQueryError = (name: string, error: TRPCError) =>
-  rest.get(`http://localhost:3000/api/trpc/${name}`, (_req, res, ctx) =>
-    res(
-      ctx.status(500),
-      ctx.json({ error: { code: error.code, message: error.message } })
-    )
-  );
+  http.get(`http://localhost:3000/api/trpc/${name}`, () => {
+    return new Response(
+      JSON.stringify({ error: { code: error.code, message: error.message } }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
+  });
 
 export const mockTrpcMutation = (name: string, result: unknown) =>
-  rest.post(`http://localhost:3000/api/trpc/${name}`, (_req, res, ctx) =>
-    res(ctx.json({ result: { data: result } }))
-  );
+  http.post(`http://localhost:3000/api/trpc/${name}`, () => {
+    return Response.json({ result: { data: result } });
+  });
 
 export const mockTrpcMutationError = (name: string, error: TRPCError) =>
-  rest.post(`http://localhost:3000/api/trpc/${name}`, (_req, res, ctx) =>
-    res(
-      ctx.status(500),
-      ctx.json({ error: { code: error.code, message: error.message } })
-    )
-  );
+  http.post(`http://localhost:3000/api/trpc/${name}`, () => {
+    return new Response(
+      JSON.stringify({ error: { code: error.code, message: error.message } }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } }
+    );
+  });
 
 export const mockSession = (session: Session | undefined | null) =>
-  rest.get('http://localhost:3000/api/auth/session', (_req, res, ctx) =>
-    session ? res(ctx.json(session)) : res(ctx.json({}))
-  );
+  http.get('http://localhost:3000/api/auth/session', () => {
+    return session ? Response.json(session) : Response.json({});
+  });
 
 export * from '@testing-library/react';
 
