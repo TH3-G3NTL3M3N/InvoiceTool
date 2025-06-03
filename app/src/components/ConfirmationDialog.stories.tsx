@@ -5,7 +5,7 @@ import useDisclosure from '@lib/useDisclosure';
 import ConfirmationDialog from './ConfirmationDialog';
 import Button from './Button';
 
-export default {
+const meta: Meta<typeof ConfirmationDialog> = {
   title: 'ConfirmationDialog',
   component: ConfirmationDialog,
   argTypes: {
@@ -14,28 +14,31 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as Meta<typeof ConfirmationDialog>;
-
-const Template: ComponentStory<typeof ConfirmationDialog> = (args) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  return (
-    <>
-      <Button onClick={onOpen}>Open confirmation dialog</Button>
-      <ConfirmationDialog {...args} isOpen={isOpen} onClose={onClose} />
-    </>
-  );
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  title: 'Are you sure you want to delete the client?',
-  description:
-    "This action can not be undone. You will have to add the client's details again if you want to collaborate with them in the future",
-  confirm: {
-    label: 'Delete',
-    icon: faTrash,
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  render: (args: React.ComponentProps<typeof ConfirmationDialog>) => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    return (
+      <>
+        <Button onClick={onOpen}>Open confirmation dialog</Button>
+        <ConfirmationDialog {...args} isOpen={isOpen} onClose={onClose} />
+      </>
+    );
   },
-  cancel: {
-    label: 'Cancel',
+  args: {
+    title: 'Are you sure you want to delete the client?',
+    description:
+      "This action can not be undone. You will have to add the client's details again if you want to collaborate with them in the future",
+    confirm: {
+      label: 'Delete',
+      icon: faTrash,
+    },
+    cancel: {
+      label: 'Cancel',
+    },
   },
 };
