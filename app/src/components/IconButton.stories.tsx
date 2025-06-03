@@ -23,7 +23,7 @@ const IconInputType = {
   control: { type: 'select' },
 };
 
-export default {
+const meta: Meta<typeof IconButton> = {
   title: 'IconButton',
   component: IconButton,
   argTypes: {
@@ -32,25 +32,23 @@ export default {
     icon: IconInputType,
     color: {
       control: { type: 'radio' },
-      options: ['primary', 'secondary', 'danger'],
+      options: ['primary', 'secondary', 'tertiary', 'danger'],
     },
   },
   parameters: {
     layout: 'centered',
   },
-} as Meta<typeof IconButton>;
+};
 
-const Template: ComponentStory<typeof IconButton> = (args) => (
-  <IconButton {...args} />
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  color: 'primary',
-  variant: 'solid',
-  children: 'Button',
-  icon: faBriefcase,
-  disabled: false,
-  size: 'md',
-  fullWidth: false,
+export const Default: Story = {
+  args: {
+    color: 'primary',
+    variant: 'solid',
+    icon: faBriefcase,
+    disabled: false,
+    size: 'md',
+  },
 };

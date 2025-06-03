@@ -2,7 +2,8 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import type { Client } from '@server/clients/types';
 import ClientsTable from './ClientsTable';
-export default {
+
+const meta: Meta<typeof ClientsTable> = {
   title: 'ClientsTable',
   component: ClientsTable,
   argTypes: {
@@ -11,7 +12,10 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-} as Meta<typeof ClientsTable>;
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const now = new Date().toISOString();
 const clients: Client[] = [
@@ -65,10 +69,8 @@ const clients: Client[] = [
   },
 ];
 
-const Template: ComponentStory<typeof ClientsTable> = (args) => (
-  <div className="w-full h-full bg-violet-50 items-center justify-center p-10">
-    <ClientsTable {...args} clients={clients} />
-  </div>
-);
-
-export const Default = Template.bind({});
+export const Default: Story = {
+  args: {
+    clients,
+  },
+};

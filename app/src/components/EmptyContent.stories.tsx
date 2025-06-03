@@ -2,7 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import EmptyContent from './EmptyContent';
 
-export default {
+const meta: Meta<typeof EmptyContent> = {
   title: 'EmptyContent',
   component: EmptyContent,
   argTypes: {
@@ -11,15 +11,15 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as Meta<typeof EmptyContent>;
+};
 
-const Template: ComponentStory<typeof EmptyContent> = (args) => (
-  <EmptyContent {...args} />
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  message: "You don't have any invoices yet",
-  createLabel: 'Add invoices',
-  createHref: '/',
+export const Default: Story = {
+  args: {
+    message: "You don't have any invoices yet",
+    createLabel: 'Add invoices',
+    createHref: '/',
+  },
 };
