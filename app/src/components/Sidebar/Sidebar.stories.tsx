@@ -31,16 +31,16 @@ export const Default: Story = {
     },
     msw: {
       handlers: [
-        http.get('http://localhost:6006/api/auth/session', () => {
-          return Response.json({
+        http.get('http://localhost:6006/api/auth/session', () =>
+          Response.json({
             user: {
               name: 'David Saltares',
               email: 'david.saltares@gmail.com',
             },
             userId: 'user_1',
             companyId: 'company_1',
-          });
-        }),
+          })
+        ),
       ],
     },
   },

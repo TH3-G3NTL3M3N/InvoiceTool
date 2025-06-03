@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Avatar from './Avatar';
 
@@ -15,30 +14,27 @@ type Story = StoryObj<typeof meta>;
 
 export const WithImage: Story = {
   args: {
-    user: {
-      image: 'https://avatars.githubusercontent.com/u/570314?v=4',
-    },
+    src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facepad&facepad=2&w=256&h=256&q=80',
+    alt: 'user',
   },
 };
 
 export const WithInitials: Story = {
   args: {
-    user: {
-      name: 'Ada Lovelace',
-    },
+    initials: 'DS',
+    alt: 'user',
   },
 };
 
 export const WithInitialFromEmail: Story = {
   args: {
-    user: {
-      email: 'ada.lovelace@company.com',
-    },
+    email: 'test@example.com',
+    alt: 'user',
   },
 };
 
 export const WithPlaceholder: Story = {
   args: {
-    user: {},
+    alt: 'user',
   },
 };

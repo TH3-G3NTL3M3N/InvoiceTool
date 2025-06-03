@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import type { ClientSafeProvider } from 'next-auth/react';
 import SignInForm from './SignInForm';

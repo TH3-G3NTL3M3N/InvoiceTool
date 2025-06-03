@@ -19,23 +19,25 @@ const meta: Meta<typeof AutocompleteField> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const AutocompleteFieldWrapper = (args: React.ComponentProps<typeof AutocompleteField>) => {
+  const [value, setValue] = useState<string | undefined>(undefined);
+  return (
+    <div className="w-full p-8">
+      <AutocompleteField
+        id="autocomplete-field"
+        {...args}
+        value={value as string}
+        options={['Spiderman', 'Wolverine', 'Cyclops']}
+        onChange={setValue}
+        optionToLabel={(option: string) => option}
+        optionToKey={(option: string) => option}
+      />
+    </div>
+  );
+};
+
 export const Default: Story = {
-  render: (args: React.ComponentProps<typeof AutocompleteField>) => {
-    const [value, setValue] = useState<string | undefined>(undefined);
-    return (
-      <div className="w-full p-8">
-        <AutocompleteField
-          id="autocomplete-field"
-          {...args}
-          value={value as string}
-          options={['Spiderman', 'Wolverine', 'Cyclops']}
-          onChange={setValue}
-          optionToLabel={(option: string) => option}
-          optionToKey={(option: string) => option}
-        />
-      </div>
-    );
-  },
+  render: AutocompleteFieldWrapper,
   args: {
     placeholder: 'Superhero',
     disabled: false,

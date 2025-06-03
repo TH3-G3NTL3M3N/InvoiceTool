@@ -1,20 +1,8 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Toaster } from 'react-hot-toast';
-import Toast, { type ToastArgs } from './Toast';
-import Button from './Button';
+import toast from 'react-hot-toast';
 
-const ToastComponent = (_args: ToastArgs) => <h1>hello</h1>;
-
-const meta: Meta<typeof ToastComponent> = {
+const meta: Meta = {
   title: 'Toast',
-  component: ToastComponent,
-  argTypes: {
-    color: {
-      control: { type: 'radio' },
-      options: ['primary', 'secondary', 'danger'],
-    },
-  },
   parameters: {
     layout: 'centered',
   },
@@ -24,8 +12,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    color: 'secondary',
-    message: 'Toast message',
+  render: () => {
+    toast.success('This is a success message');
+    return (
+      <div>
+        <p>Check for toast notification!</p>
+      </div>
+    );
   },
 };

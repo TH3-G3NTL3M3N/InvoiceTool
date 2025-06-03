@@ -19,23 +19,25 @@ const meta: Meta<typeof SelectField> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const SelectFieldWrapper = (args: React.ComponentProps<typeof SelectField>) => {
+  const [value, setValue] = useState<string | undefined>(undefined);
+  return (
+    <div className="w-full p-8">
+      <SelectField
+        id="select-field"
+        {...args}
+        value={value as string}
+        options={['Value 1', 'Value 2', 'Value 3']}
+        onChange={setValue}
+        optionToLabel={(option: string) => option}
+        optionToKey={(option: string) => option}
+      />
+    </div>
+  );
+};
+
 export const Default: Story = {
-  render: (args: React.ComponentProps<typeof SelectField>) => {
-    const [value, setValue] = useState<string | undefined>(undefined);
-    return (
-      <div className="w-full p-8">
-        <SelectField
-          id="select-field"
-          {...args}
-          value={value as string}
-          options={['Value 1', 'Value 2', 'Value 3']}
-          onChange={setValue}
-          optionToLabel={(option: string) => option}
-          optionToKey={(option: string) => option}
-        />
-      </div>
-    );
-  },
+  render: SelectFieldWrapper,
   args: {
     placeholder: 'Select an option',
     disabled: false,

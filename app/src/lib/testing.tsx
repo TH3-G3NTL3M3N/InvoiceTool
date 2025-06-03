@@ -87,35 +87,35 @@ export const mockRouter: NextRouter = {
 };
 
 export const mockTrpcQuery = (name: string, result: unknown) =>
-  http.get(`http://localhost:3000/api/trpc/${name}`, () => {
-    return Response.json({ result: { data: result } });
-  });
+  http.get(`http://localhost:3000/api/trpc/${name}`, () =>
+    Response.json({ result: { data: result } })
+  );
 
 export const mockTrpcQueryError = (name: string, error: TRPCError) =>
-  http.get(`http://localhost:3000/api/trpc/${name}`, () => {
-    return new Response(
+  http.get(`http://localhost:3000/api/trpc/${name}`, () =>
+    new Response(
       JSON.stringify({ error: { code: error.code, message: error.message } }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
-  });
+    )
+  );
 
 export const mockTrpcMutation = (name: string, result: unknown) =>
-  http.post(`http://localhost:3000/api/trpc/${name}`, () => {
-    return Response.json({ result: { data: result } });
-  });
+  http.post(`http://localhost:3000/api/trpc/${name}`, () =>
+    Response.json({ result: { data: result } })
+  );
 
 export const mockTrpcMutationError = (name: string, error: TRPCError) =>
-  http.post(`http://localhost:3000/api/trpc/${name}`, () => {
-    return new Response(
+  http.post(`http://localhost:3000/api/trpc/${name}`, () =>
+    new Response(
       JSON.stringify({ error: { code: error.code, message: error.message } }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
-  });
+    )
+  );
 
 export const mockSession = (session: Session | undefined | null) =>
-  http.get('http://localhost:3000/api/auth/session', () => {
-    return session ? Response.json(session) : Response.json({});
-  });
+  http.get('http://localhost:3000/api/auth/session', () =>
+    session ? Response.json(session) : Response.json({})
+  );
 
 export * from '@testing-library/react';
 

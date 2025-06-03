@@ -20,19 +20,21 @@ const meta: Meta<typeof Toggle> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const ToggleWrapper = (args: React.ComponentProps<typeof Toggle>) => {
+  const [checked, setChecked] = useState(false);
+  return (
+    <Toggle
+      {...args}
+      checked={checked}
+      onChange={(e) => {
+        setChecked(e.target.checked);
+      }}
+    />
+  );
+};
+
 export const Default: Story = {
-  render: (args: React.ComponentProps<typeof Toggle>) => {
-    const [checked, setChecked] = useState(false);
-    return (
-      <Toggle
-        {...args}
-        checked={checked}
-        onChange={(e) => {
-          setChecked(e.target.checked);
-        }}
-      />
-    );
-  },
+  render: ToggleWrapper,
   args: {
     label: 'Toggle me',
     disabled: false,

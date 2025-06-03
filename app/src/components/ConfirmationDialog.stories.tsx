@@ -19,16 +19,18 @@ const meta: Meta<typeof ConfirmationDialog> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const ConfirmationDialogWrapper = (args: React.ComponentProps<typeof ConfirmationDialog>) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  return (
+    <>
+      <Button onClick={onOpen}>Open confirmation dialog</Button>
+      <ConfirmationDialog {...args} isOpen={isOpen} onClose={onClose} />
+    </>
+  );
+};
+
 export const Default: Story = {
-  render: (args: React.ComponentProps<typeof ConfirmationDialog>) => {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    return (
-      <>
-        <Button onClick={onOpen}>Open confirmation dialog</Button>
-        <ConfirmationDialog {...args} isOpen={isOpen} onClose={onClose} />
-      </>
-    );
-  },
+  render: ConfirmationDialogWrapper,
   args: {
     title: 'Are you sure you want to delete the client?',
     description:
