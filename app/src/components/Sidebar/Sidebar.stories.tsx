@@ -1,46 +1,47 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { rest } from 'msw';
+import { http } from 'msw';
 import Providers from '@components/Providers';
 import Sidebar from './Sidebar';
 
-export default {
+const meta: Meta<typeof Sidebar> = {
   title: 'Sidebar',
   component: Sidebar,
   layout: 'fullscreen',
   argTypes: {
     onClose: { action: 'closed' },
   },
-} as Meta<typeof Sidebar>;
+};
 
-const Template: ComponentStory<typeof Sidebar> = (args) => (
-  <Providers>
-    <Sidebar {...args} />
-  </Providers>
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {};
-Default.parameters = {
-  nextRouter: {
-    pathname: '/company',
-    asPath: '/company',
-    query: {},
-  },
-  msw: {
-    handlers: [
-      rest.get('http://localhost:6006/api/auth/session', (_req, res, ctx) =>
-        res(
-          ctx.json({
+export const Default: Story = {
+  render: (args: React.ComponentProps<typeof Sidebar>) => (
+    <Providers>
+      <Sidebar {...args} />
+    </Providers>
+  ),
+  args: {},
+  parameters: {
+    nextRouter: {
+      pathname: '/company',
+      asPath: '/company',
+      query: {},
+    },
+    msw: {
+      handlers: [
+        http.get('http://localhost:6006/api/auth/session', () => {
+          return Response.json({
             user: {
               name: 'David Saltares',
               email: 'david.saltares@gmail.com',
             },
             userId: 'user_1',
             companyId: 'company_1',
-          })
-        )
-      ),
-    ],
+          });
+        }),
+      ],
+    },
   },
 };

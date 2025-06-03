@@ -2,22 +2,25 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import NavLinks from './NavLinks';
 
-export default {
+const meta: Meta<typeof NavLinks> = {
   title: 'NavLinks',
   component: NavLinks,
   parameters: {
     layout: 'centered',
   },
-} as Meta<typeof NavLinks>;
+};
 
-const Template: ComponentStory<typeof NavLinks> = () => <NavLinks />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {};
-Default.parameters = {
-  nextRouter: {
-    pathname: '/company',
-    asPath: '/company',
-    query: {},
+export const Default: Story = {
+  render: () => <NavLinks />,
+  args: {},
+  parameters: {
+    nextRouter: {
+      pathname: '/company',
+      asPath: '/company',
+      query: {},
+    },
   },
 };

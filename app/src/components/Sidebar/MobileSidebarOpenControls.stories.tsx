@@ -2,18 +2,21 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import MobileSidebarOpenControls from './MobileSidebarOpenControls';
 
-export default {
+const meta: Meta<typeof MobileSidebarOpenControls> = {
   title: 'MobileSidebarOpenControls',
   component: MobileSidebarOpenControls,
   argTypes: {
     onOpenSidebar: { action: 'opened' },
   },
-} as Meta<typeof MobileSidebarOpenControls>;
+};
 
-const Template: ComponentStory<typeof MobileSidebarOpenControls> = (args) => (
-  <div className="p-4">
-    <MobileSidebarOpenControls {...args} />
-  </div>
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
+export const Default: Story = {
+  render: (args: React.ComponentProps<typeof MobileSidebarOpenControls>) => (
+    <div className="p-4">
+      <MobileSidebarOpenControls {...args} />
+    </div>
+  ),
+};

@@ -15,7 +15,7 @@ const Icons = {
   faFileInvoice,
 };
 
-export default {
+const meta: Meta<typeof NavLink> = {
   title: 'NavLink',
   component: NavLink,
   argTypes: {
@@ -28,16 +28,19 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as Meta<typeof NavLink>;
+};
 
-const Template: ComponentStory<typeof NavLink> = (args) => (
-  <NavLink {...args} />
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  label: 'Company',
-  href: '/company',
-  icon: faBriefcase,
-  selected: false,
+export const Default: Story = {
+  render: (args: React.ComponentProps<typeof NavLink>) => (
+    <NavLink {...args} />
+  ),
+  args: {
+    label: 'Company',
+    href: '/company',
+    icon: faBriefcase,
+    selected: false,
+  },
 };

@@ -1,16 +1,18 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import FullScreenSpinner from './FullScreenSpinner';
-export default {
+
+const meta: Meta<typeof FullScreenSpinner> = {
   title: 'FullScreenSpinner',
   component: FullScreenSpinner,
   parameters: {
     layout: 'centered',
   },
-} as Meta<typeof FullScreenSpinner>;
+};
 
-const Template: ComponentStory<typeof FullScreenSpinner> = () => (
-  <FullScreenSpinner />
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
+export const Default: Story = {
+  render: () => <FullScreenSpinner />,
+};

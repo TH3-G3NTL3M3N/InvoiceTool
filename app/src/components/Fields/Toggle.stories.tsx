@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Toggle from './Toggle';
 
-export default {
+const meta: Meta<typeof Toggle> = {
   title: 'Toggle',
   component: Toggle,
   argTypes: {
@@ -15,23 +15,26 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as Meta<typeof Toggle>;
-
-const Template: ComponentStory<typeof Toggle> = (args) => {
-  const [checked, setChecked] = useState(false);
-  return (
-    <Toggle
-      {...args}
-      checked={checked}
-      onChange={(e) => {
-        setChecked(e.target.checked);
-      }}
-    />
-  );
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  label: 'Toggle me',
-  disabled: false,
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  render: (args: React.ComponentProps<typeof Toggle>) => {
+    const [checked, setChecked] = useState(false);
+    return (
+      <Toggle
+        {...args}
+        checked={checked}
+        onChange={(e) => {
+          setChecked(e.target.checked);
+        }}
+      />
+    );
+  },
+  args: {
+    label: 'Toggle me',
+    disabled: false,
+  },
 };

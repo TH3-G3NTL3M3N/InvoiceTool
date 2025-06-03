@@ -16,7 +16,7 @@ const IconInputType = {
   control: { type: 'select' },
 };
 
-export default {
+const meta: Meta<typeof SidebarButton> = {
   title: 'SidebarButton',
   component: SidebarButton,
   argTypes: {
@@ -26,15 +26,18 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as Meta<typeof SidebarButton>;
+};
 
-const Template: ComponentStory<typeof SidebarButton> = (args) => (
-  <SidebarButton {...args} />
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  variant: 'primary',
-  label: 'menu',
-  icon: faBars,
+export const Default: Story = {
+  render: (args: React.ComponentProps<typeof SidebarButton>) => (
+    <SidebarButton {...args} />
+  ),
+  args: {
+    variant: 'primary',
+    label: 'menu',
+    icon: faBars,
+  },
 };
