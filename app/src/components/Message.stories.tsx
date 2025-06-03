@@ -2,7 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Message from './Message';
 
-export default {
+const meta: Meta<typeof Message> = {
   title: 'Message',
   component: Message,
   argTypes: {
@@ -19,15 +19,15 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as Meta<typeof Message>;
+};
 
-const Template: ComponentStory<typeof Message> = (args) => (
-  <Message {...args} />
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  color: 'primary',
-  variant: 'solid',
-  message: 'This is a message',
+export const Default: Story = {
+  args: {
+    color: 'primary',
+    variant: 'solid',
+    message: 'This is a message',
+  },
 };

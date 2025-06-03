@@ -23,7 +23,7 @@ const IconInputType = {
   control: { type: 'select' },
 };
 
-export default {
+const meta: Meta<typeof LinkButton> = {
   title: 'LinkButton',
   component: LinkButton,
   argTypes: {
@@ -43,19 +43,19 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as Meta<typeof LinkButton>;
+};
 
-const Template: ComponentStory<typeof LinkButton> = (args) => (
-  <LinkButton {...args} />
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  color: 'primary',
-  variant: 'solid',
-  children: 'Button',
-  startIcon: faBriefcase,
-  size: 'md',
-  fullWidth: false,
-  href: '/',
+export const Default: Story = {
+  args: {
+    color: 'primary',
+    variant: 'solid',
+    children: 'Button',
+    startIcon: faBriefcase,
+    size: 'md',
+    fullWidth: false,
+    href: '/',
+  },
 };
