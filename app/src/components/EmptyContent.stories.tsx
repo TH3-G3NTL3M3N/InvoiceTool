@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import EmptyContent from './EmptyContent';
 
 export default {
@@ -11,7 +11,7 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as ComponentMeta<typeof EmptyContent>;
+} as Meta<typeof EmptyContent>;
 
 const Template: ComponentStory<typeof EmptyContent> = (args) => (
   <EmptyContent {...args} />

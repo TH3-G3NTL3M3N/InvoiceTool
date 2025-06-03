@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import {
   faBoxOpen,
   faBriefcase,
@@ -28,7 +28,7 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as ComponentMeta<typeof NavLink>;
+} as Meta<typeof NavLink>;
 
 const Template: ComponentStory<typeof NavLink> = (args) => (
   <NavLink {...args} />

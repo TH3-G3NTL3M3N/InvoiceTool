@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import SidebarButton from './SidebarButton';
 import GoogleIcon from './../Icons/GoogleIcon';
@@ -26,7 +26,7 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as ComponentMeta<typeof SidebarButton>;
+} as Meta<typeof SidebarButton>;
 
 const Template: ComponentStory<typeof SidebarButton> = (args) => (
   <SidebarButton {...args} />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import AutocompleteField from './AutocompleteField';
 
 export default {
@@ -14,7 +14,7 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as ComponentMeta<typeof AutocompleteField>;
+} as Meta<typeof AutocompleteField>;
 
 const Template: ComponentStory<typeof AutocompleteField> = (args) => {
   const [value, setValue] = useState<string | undefined>(undefined);

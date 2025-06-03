@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import {
   faBoxOpen,
   faBriefcase,
@@ -38,7 +38,7 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as ComponentMeta<typeof IconButton>;
+} as Meta<typeof IconButton>;
 
 const Template: ComponentStory<typeof IconButton> = (args) => (
   <IconButton {...args} />

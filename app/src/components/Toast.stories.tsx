@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Toaster } from 'react-hot-toast';
 import Toast, { type ToastArgs } from './Toast';
 import Button from './Button';
@@ -18,7 +18,7 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as ComponentMeta<typeof ToastComponent>;
+} as Meta<typeof ToastComponent>;
 
 const Template: ComponentStory<typeof ToastComponent> = (args) => (
   <>

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import MobileSidebarOpenControls from './MobileSidebarOpenControls';
 
 export default {
@@ -8,7 +8,7 @@ export default {
   argTypes: {
     onOpenSidebar: { action: 'opened' },
   },
-} as ComponentMeta<typeof MobileSidebarOpenControls>;
+} as Meta<typeof MobileSidebarOpenControls>;
 
 const Template: ComponentStory<typeof MobileSidebarOpenControls> = (args) => (
   <div className="p-4">

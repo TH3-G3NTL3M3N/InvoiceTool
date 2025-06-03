@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { rest } from 'msw';
 import Providers from '@components/Providers';
 import SidebarLayout from './SidebarLayout';
@@ -8,7 +8,7 @@ export default {
   title: 'SidebarLayout',
   component: SidebarLayout,
   layout: 'fullscreen',
-} as ComponentMeta<typeof SidebarLayout>;
+} as Meta<typeof SidebarLayout>;
 
 const Template: ComponentStory<typeof SidebarLayout> = (args) => (
   <Providers>

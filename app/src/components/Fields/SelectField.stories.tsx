@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import SelectField from './SelectField';
 
 export default {
@@ -14,7 +14,7 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as ComponentMeta<typeof SelectField>;
+} as Meta<typeof SelectField>;
 
 const Template: ComponentStory<typeof SelectField> = (args) => {
   const [value, setValue] = useState<string | undefined>(undefined);

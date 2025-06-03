@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import FullScreenSpinner from './FullScreenSpinner';
 export default {
   title: 'FullScreenSpinner',
@@ -7,7 +7,7 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as ComponentMeta<typeof FullScreenSpinner>;
+} as Meta<typeof FullScreenSpinner>;
 
 const Template: ComponentStory<typeof FullScreenSpinner> = () => (
   <FullScreenSpinner />

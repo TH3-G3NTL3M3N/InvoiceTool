@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import Card from './Card';
 export default {
   title: 'Card',
@@ -7,7 +7,7 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as ComponentMeta<typeof Card>;
+} as Meta<typeof Card>;
 
 const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 

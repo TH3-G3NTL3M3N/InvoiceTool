@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import useDisclosure from '@lib/useDisclosure';
 import ConfirmationDialog from './ConfirmationDialog';
@@ -14,7 +14,7 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as ComponentMeta<typeof ConfirmationDialog>;
+} as Meta<typeof ConfirmationDialog>;
 
 const Template: ComponentStory<typeof ConfirmationDialog> = (args) => {
   const { isOpen, onOpen, onClose } = useDisclosure();

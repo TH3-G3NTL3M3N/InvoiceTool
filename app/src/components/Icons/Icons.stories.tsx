@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import type { CustomIcon } from './types';
 import GoogleIcon from './GoogleIcon';
 import UserPlaceholderIcon from './UserPlaceholderIcon';
@@ -9,7 +9,7 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as ComponentMeta<CustomIcon>;
+} satisfies Meta<CustomIcon>;
 
 const Template: ComponentStory<CustomIcon> = () => {
   const className = 'w-6 h-6';

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import Message from './Message';
 
 export default {
@@ -19,7 +19,7 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as ComponentMeta<typeof Message>;
+} as Meta<typeof Message>;
 
 const Template: ComponentStory<typeof Message> = (args) => (
   <Message {...args} />

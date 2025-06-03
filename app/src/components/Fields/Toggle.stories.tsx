@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import Toggle from './Toggle';
 
 export default {
@@ -15,7 +15,7 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as ComponentMeta<typeof Toggle>;
+} as Meta<typeof Toggle>;
 
 const Template: ComponentStory<typeof Toggle> = (args) => {
   const [checked, setChecked] = useState(false);

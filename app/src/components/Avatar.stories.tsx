@@ -1,37 +1,44 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import Avatar from './Avatar';
 
-export default {
+const meta: Meta<typeof Avatar> = {
   title: 'Avatar',
   component: Avatar,
   parameters: {
     layout: 'centered',
   },
-} as ComponentMeta<typeof Avatar>;
+};
 
-const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const WithImage = Template.bind({});
-export const WithInitials = Template.bind({});
-export const WithInitialFromEmail = Template.bind({});
-export const WithPlaceholder = Template.bind({});
-
-WithImage.args = {
-  user: {
-    image: 'https://avatars.githubusercontent.com/u/570314?v=4',
+export const WithImage: Story = {
+  args: {
+    user: {
+      image: 'https://avatars.githubusercontent.com/u/570314?v=4',
+    },
   },
 };
-WithInitials.args = {
-  user: {
-    name: 'Ada Lovelace',
+
+export const WithInitials: Story = {
+  args: {
+    user: {
+      name: 'Ada Lovelace',
+    },
   },
 };
-WithInitialFromEmail.args = {
-  user: {
-    email: 'ada.lovelace@company.com',
+
+export const WithInitialFromEmail: Story = {
+  args: {
+    user: {
+      email: 'ada.lovelace@company.com',
+    },
   },
 };
-WithPlaceholder.args = {
-  user: {},
+
+export const WithPlaceholder: Story = {
+  args: {
+    user: {},
+  },
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import type { ClientSafeProvider } from 'next-auth/react';
 import SignInForm from './SignInForm';
 
@@ -8,7 +8,7 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-} as ComponentMeta<typeof SignInForm>;
+} as Meta<typeof SignInForm>;
 
 const providers: Record<string, ClientSafeProvider> = {
   google: {

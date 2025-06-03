@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import type { Client } from '@server/clients/types';
 import ClientsTable from './ClientsTable';
 export default {
@@ -11,7 +11,7 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-} as ComponentMeta<typeof ClientsTable>;
+} as Meta<typeof ClientsTable>;
 
 const now = new Date().toISOString();
 const clients: Client[] = [

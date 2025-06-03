@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import type { Product } from '@server/products/types';
 import ProductsTable from './ProductsTable';
 export default {
@@ -11,7 +11,7 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-} as ComponentMeta<typeof ProductsTable>;
+} as Meta<typeof ProductsTable>;
 
 const now = new Date().toISOString();
 const products: Product[] = [

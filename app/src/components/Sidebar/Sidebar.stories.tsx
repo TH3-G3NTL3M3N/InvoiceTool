@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { rest } from 'msw';
 import Providers from '@components/Providers';
 import Sidebar from './Sidebar';
@@ -11,7 +11,7 @@ export default {
   argTypes: {
     onClose: { action: 'closed' },
   },
-} as ComponentMeta<typeof Sidebar>;
+} as Meta<typeof Sidebar>;
 
 const Template: ComponentStory<typeof Sidebar> = (args) => (
   <Providers>

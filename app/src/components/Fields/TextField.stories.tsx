@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import TextField from './TextField';
 
 export default {
@@ -15,7 +15,7 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as ComponentMeta<typeof TextField>;
+} as Meta<typeof TextField>;
 
 const Template: ComponentStory<typeof TextField> = (args) => (
   <div className="w-full p-8">

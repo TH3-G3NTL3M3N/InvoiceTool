@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import {
   faBoxOpen,
   faBriefcase,
@@ -23,7 +23,7 @@ const IconInputType = {
   control: { type: 'select' },
 };
 
-export default {
+const meta: Meta<typeof Button> = {
   title: 'Button',
   component: Button,
   argTypes: {
@@ -39,17 +39,19 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as ComponentMeta<typeof Button>;
+};
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  color: 'primary',
-  variant: 'solid',
-  children: 'Button',
-  startIcon: faBriefcase,
-  disabled: false,
-  size: 'md',
-  fullWidth: false,
+export const Default: Story = {
+  args: {
+    color: 'primary',
+    variant: 'solid',
+    children: 'Button',
+    startIcon: faBriefcase,
+    disabled: false,
+    size: 'md',
+    fullWidth: false,
+  },
 };
