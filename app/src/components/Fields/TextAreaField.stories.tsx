@@ -2,7 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import TextAreaField from './TextAreaField';
 
-export default {
+const meta: Meta<typeof TextAreaField> = {
   title: 'TextAreaField',
   component: TextAreaField,
   argTypes: {
@@ -15,20 +15,23 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as Meta<typeof TextAreaField>;
+};
 
-const Template: ComponentStory<typeof TextAreaField> = (args) => (
-  <div className="w-full p-8">
-    <TextAreaField id="text-field" {...args} />
-  </div>
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  placeholder: 'Company number',
-  disabled: false,
-  error: '',
-  tip: 'This is a tip',
-  label: 'Company ID',
-  rows: 3,
+export const Default: Story = {
+  render: (args: React.ComponentProps<typeof TextAreaField>) => (
+    <div className="w-full p-8">
+      <TextAreaField id="text-field" {...args} />
+    </div>
+  ),
+  args: {
+    placeholder: 'Company number',
+    disabled: false,
+    error: '',
+    tip: 'This is a tip',
+    label: 'Company ID',
+    rows: 3,
+  },
 };
