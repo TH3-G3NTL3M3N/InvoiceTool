@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import {
   faBoxOpen,
@@ -28,12 +27,17 @@ const meta: Meta<typeof Button> = {
   component: Button,
   argTypes: {
     disabled: { control: 'boolean' },
-    onClick: { action: 'clicked' },
     startIcon: IconInputType,
     endIcon: IconInputType,
     color: {
       control: { type: 'radio' },
       options: ['primary', 'secondary', 'tertiary', 'danger'],
+    },
+    variant: {
+      control: {
+        type: 'radio',
+      },
+      options: ['solid', 'light', 'outlined', 'borderless'],
     },
   },
   parameters: {
@@ -50,7 +54,6 @@ export const Default: Story = {
     variant: 'solid',
     children: 'Button',
     startIcon: faBriefcase,
-    disabled: false,
     size: 'md',
     fullWidth: false,
   },
