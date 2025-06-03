@@ -3,12 +3,15 @@ import type { Meta, StoryObj } from '@storybook/react';
 import type { ClientSafeProvider } from 'next-auth/react';
 import SignInForm from './SignInForm';
 
-export default {
+const meta: Meta<typeof SignInForm> = {
   title: 'SignInForm',
   parameters: {
     layout: 'fullscreen',
   },
-} as Meta<typeof SignInForm>;
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const providers: Record<string, ClientSafeProvider> = {
   google: {
@@ -27,10 +30,8 @@ const providers: Record<string, ClientSafeProvider> = {
   },
 };
 
-const Template: ComponentStory<typeof SignInForm> = () => (
-  <div className="flex w-full h-full items-center justify-center">
-    <SignInForm providers={providers} />
-  </div>
-);
-
-export const Default = Template.bind({});
+export const Default: Story = {
+  args: {
+    providers,
+  },
+};

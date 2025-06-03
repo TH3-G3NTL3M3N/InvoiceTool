@@ -2,7 +2,8 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import type { Product } from '@server/products/types';
 import ProductsTable from './ProductsTable';
-export default {
+
+const meta: Meta<typeof ProductsTable> = {
   title: 'ProductsTable',
   component: ProductsTable,
   argTypes: {
@@ -11,7 +12,10 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-} as Meta<typeof ProductsTable>;
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const now = new Date().toISOString();
 const products: Product[] = [
@@ -53,10 +57,8 @@ const products: Product[] = [
   },
 ];
 
-const Template: ComponentStory<typeof ProductsTable> = (args) => (
-  <div className="w-full h-full bg-violet-50 items-center justify-center p-10">
-    <ProductsTable {...args} products={products} />
-  </div>
-);
-
-export const Default = Template.bind({});
+export const Default: Story = {
+  args: {
+    products,
+  },
+};
