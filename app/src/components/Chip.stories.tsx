@@ -23,7 +23,7 @@ const IconInputType = {
   control: { type: 'select' },
 };
 
-export default {
+const meta: Meta<typeof Chip> = {
   title: 'Chip',
   component: Chip,
   argTypes: {
@@ -41,15 +41,17 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as Meta<typeof Chip>;
+};
 
-const Template: ComponentStory<typeof Chip> = (args) => <Chip {...args} />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  color: 'primary',
-  variant: 'solid',
-  children: 'Chip',
-  startIcon: faBriefcase,
-  size: 'md',
+export const Default: Story = {
+  args: {
+    color: 'primary',
+    variant: 'solid',
+    children: 'Chip',
+    startIcon: faBriefcase,
+    size: 'md',
+  },
 };

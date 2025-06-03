@@ -6,7 +6,7 @@ import Button from './Button';
 
 const ToastComponent = (_args: ToastArgs) => <h1>hello</h1>;
 
-export default {
+const meta: Meta<typeof ToastComponent> = {
   title: 'Toast',
   component: ToastComponent,
   argTypes: {
@@ -18,17 +18,14 @@ export default {
   parameters: {
     layout: 'centered',
   },
-} as Meta<typeof ToastComponent>;
+};
 
-const Template: ComponentStory<typeof ToastComponent> = (args) => (
-  <>
-    <Button onClick={() => Toast(args)}>Toast</Button>
-    <Toaster position="bottom-center" />
-  </>
-);
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  color: 'secondary',
-  message: 'Toast message',
+export const Default: Story = {
+  args: {
+    color: 'secondary',
+    message: 'Toast message',
+  },
 };

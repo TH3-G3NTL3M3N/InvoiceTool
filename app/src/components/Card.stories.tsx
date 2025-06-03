@@ -1,17 +1,20 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Card from './Card';
-export default {
+
+const meta: Meta<typeof Card> = {
   title: 'Card',
   component: Card,
   parameters: {
     layout: 'centered',
   },
-} as Meta<typeof Card>;
+};
 
-const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  children: 'Content',
+export const Default: Story = {
+  args: {
+    children: 'Content',
+  },
 };
